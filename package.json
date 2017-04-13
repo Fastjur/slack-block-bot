@@ -1,0 +1,26 @@
+{
+  "name": "slack-block-bot",
+  "version": "1.0.0",
+  "description": "A bot that allows only certain users to talk in a channel on Slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fastjur/slack-block-bot.git"
+  },
+  "author": "Jurriaan Den Toonder <jurriaan.toonder@liquidpineapple.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fastjur/slack-block-bot/issues"
+  },
+  "homepage": "https://github.com/Fastjur/slack-block-bot#readme",
+  "engines": {
+    "node": "6.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
