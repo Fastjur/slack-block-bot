@@ -7,7 +7,21 @@ var port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
-    res.status(200).send('Hello world!')
+    res.status(200).send("The bot is currently functional!");
+});
+
+app.post('/', function(req, res) {
+    console.log(req.body);
+    if (req.body.challenge) {
+        console.log("Responding to challenge with token " + req.body.challenge);
+        var data = {
+            'challenge': req.body.challenge
+        };
+        res.status(200).send(data);
+    } else {
+        console.error("Received post to /");
+        res.status(400).send("Cannot post to /");
+    }
 });
 
 app.post('/bot/message/', function(req, res) {
