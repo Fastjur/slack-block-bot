@@ -10,23 +10,29 @@ app.get('/', function(req, res) {
     res.status(200).send("The bot is currently functional!");
 });
 
-app.post('/', function(req, res) {
-    console.log(req.body);
-    if (req.body.challenge) {
-        console.log("Responding to challenge with token " + req.body.challenge);
-        var data = {
-            'challenge': req.body.challenge
-        };
-        res.status(200).send(data);
-    } else {
-        console.error("Received post to /");
-        res.status(400).send("Cannot post to /");
-    }
-});
-
 app.post('/bot/message/', function(req, res) {
     console.log(req.body);
-    res.status(200).send(req.body);
+
+    if (req.body.user_id === 'USLACKBOT') {
+        res.status(200).send();
+        return;
+    }
+
+    if (req.body.token !== 'HVvyRaVDBBWBG7y8NmgxRWac') {
+        res.status(401).send();
+        return;
+    }
+
+    if (req.body.user_name !== 'blegh') {
+        var data = {
+            'text': 'Hey, you are not allowed to speak here!'
+        };
+        console.log('Username not an admin!');
+        res.status(200).send(data);
+        return;
+    }
+
+    res.status(200).send();
 });
 
 app.use(function(err, req, res, next) {
